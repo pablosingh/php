@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>04 Fetch</title>
+
+    <style>
+        body{
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f6bd20;
+            
+        }
+    </style>
+    <img src="" id="moto" height="300" alt="">
+</head>
+
+<body>
+
+<script>
+    const moto = document.querySelector('#moto');
+    var renderMoto = image => moto.setAttribute('src',image);
+
+    // Formas de Response Text, Blob(return Promise), Json(return Promise), FormData, arrayBuffer, 
+
+    // -------------------------------------------------------------------------------------------------
+    // Leyendo JSON local ---------
+    // fetch('moto.json')
+    // .then( response => response.json() )
+    // .then( data => renderMoto(data.image) )
+    // .catch( err => console.log('Error => '+err) );
+    
+    // -------------------------------------------------------------------------------------------------
+    // Leyendo foto local ---------
+    fetch('moto.jpg')
+    .then( response => response.blob() )
+    .then( binaryLargeObject => {
+        const domString = URL.createObjectURL(binaryLargeObject);
+        renderMoto(domString);
+    })
+    .catch( err => console.log('Error => '+err) );
+
+    // -------------------------------------------------------------------------------------------------
+    // Leyendo JSON de APi publica
+    // fetch('https://jsonplaceholder.typicode.com/photos')
+    // .then( response => response.json() )
+    // .then( data => {
+    //     // debugger
+    //     renderMoto(data[0].url);
+    // })
+    // .catch( err => console.log('Error => '+err) );
+
+</script>
+</body>
+</html>

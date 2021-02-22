@@ -18,6 +18,7 @@ formulario.addEventListener('submit', e => {
 		.then( data => {
 			// console.log(data);
 			if (data==='Error-vacio'){
+				console.log('Vacio...');
 				respuesta.innerHTML = `
 					<div class="alert alert-danger" role="alert">
 						Llena los campos
