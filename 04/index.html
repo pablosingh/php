@@ -41,6 +41,8 @@
     .then( response => response.blob() )
     .then( binaryLargeObject => {
         const domString = URL.createObjectURL(binaryLargeObject);
+        console.log('DomString='+domString);
+        console.log(domString);
         renderMoto(domString);
     })
     .catch( err => console.log('Error => '+err) );
